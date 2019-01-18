@@ -1,0 +1,112 @@
+html {
+    font-size: 16px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: Helvetica, serif;
+    font-size: 1rem;
+}
+a, a:active, a:visited, a:hover {
+    text-decoration: none;
+}
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #f90;
+    z-index: 333;
+    color: #fff;
+    transform: translateZ(0);
+    transition-timing-function: ease-in;
+}
+header.hide {
+    transform: translateX(-100%);
+    transition: transform;
+    transition-duration: 0.666s;
+}
+header.show {
+    transform: translateX(0);
+    transition: transform;
+    transition-duration: 1s;
+}
+header h3 {
+    text-align: center;
+    background: #000;
+    font-size: 1.666rem;
+    color: #f90;
+    height: 4.444rem;
+    vertical-align: middle;
+    line-height: 4.444rem;
+}
+header h4 {
+    text-align: left;
+    font-size: 1.333rem;
+    padding: 0.111rem 1.111rem;
+}
+header p {
+    text-align: center;
+    padding: 1.111rem 0;
+}
+
+.video-url {
+    display: block;
+    margin: 0.333rem auto;
+    width: 88.8vw;
+    font-size: 1.666rem;
+}
+
+#hamburger {
+    position: absolute;
+    background: #000;
+    margin: 0.666rem 0.333rem;
+    padding: 0.1rem 0.3rem;
+    font-size: 3.333rem;
+    color: #f90;    
+    z-index: 666;
+    cursor: pointer;
+}
+main {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+main iframe {
+    width: 100%;
+}
+main iframe:hover {
+    transition: transform 0.666s;
+}
+main iframe:hover:nth-child(1) {
+    transform: scale(1.3) translateX(30%) translateY(50%) translateZ(0);
+}
+main iframe:hover:nth-child(3) {
+    transform: scale(1.3) translateX(30%) translateY(-50%) translateZ(0);
+}
+main iframe:hover:nth-child(2) {
+    transform: scale(1.3) translateX(-30%) translateY(50%) translateZ(0);
+}
+main iframe:hover:nth-child(4) {
+    transform: scale(1.3) translateX(-30%) translateY(-50%) translateZ(0);
+}
+
+@media screen and (orientation:portrait) {
+    html {
+        font-size: 24px;
+    }
+    main {
+        grid-template-columns: auto;
+    }
+    #hamburger {
+        font-size: 3rem;
+        margin: 2.6rem 1.333rem;
+    }
+}
