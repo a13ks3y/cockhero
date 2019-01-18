@@ -1,7 +1,9 @@
 (function () {
-
+    //@todo: save and load to/from localstorage.
+    const scaleOnHoverElement = document.getElementById("scale-on-hover");
     const hamburgerElement = document.getElementById("hamburger");
     const headerElement = document.getElementById("header");
+    const mainElement = document.getElementById("main");
 
     const hideHeader = () => {
         headerElement.classList.remove("show");
@@ -27,4 +29,9 @@
             iframe && (iframe.src = src);
         })
     );
+
+    scaleOnHoverElement.addEventListener("change", e => {
+        const ct = e.currentTarget;
+        ct.checked ? mainElement.classList.add("resizable-on-hover") : mainElement.classList.remove("resizable-on-hover");
+    });
 }());
