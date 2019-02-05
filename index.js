@@ -1,6 +1,7 @@
 (function () {
     //@todo: save and load to/from localstorage.
     const scaleOnHoverElement = document.getElementById("scale-on-hover");
+    const toggleFullScreenElement = document.getElementById("toggle-full-screen");
     const hamburgerElement = document.getElementById("hamburger");
     const headerElement = document.getElementById("header");
     const mainElement = document.getElementById("main");
@@ -49,6 +50,36 @@
     scaleOnHoverElement.addEventListener("change", e => {
         const ct = e.currentTarget;
         ct.checked ? mainElement.classList.add("resizable-on-hover") : mainElement.classList.remove("resizable-on-hover");
+    });
+
+    toggleFullScreenElement.addEventListener("change", e => {
+        const isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+            (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+            (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+            (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+        const docElm = document.documentElement;
+        if (!isInFullScreen) {
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            } else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            } else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        } 
     });
 
     const defaultViewKeys = [
