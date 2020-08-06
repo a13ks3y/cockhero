@@ -83,10 +83,10 @@
     });
 
     const defaultViewKeys = [
-        "ph571567833f1e5",
-        "409491452",
-        "ph57132f2e9c79e",
-        "ph59b852804b178"
+        "",//"ph571567833f1e5",
+        "",//"409491452",
+        "",//"ph57132f2e9c79e",
+        "",//"ph59b852804b178"
     ];
 
     const updateViewKey = (viewkey, index) => {

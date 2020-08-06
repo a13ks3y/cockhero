@@ -1,7 +1,10 @@
 # CockHero
 ## Description
-Just a page with 4 embed [pornhub](https://pornhub.com) videos.
-You know the rules. [Enjoy](https://a13ks3y.github.io/cockhero/)
+Just a page with 4 embed videos from your [favorite site](https://pornhub.com).
+
+
+[Enjoy](https://a13ks3y.github.io/cockhero/)
+
 ## Road Map
 * Implement "save" and "load" (localStorage and plaintext that could be copied to the clipboard).
 * Add purpose to switch to landscape for better expirience message
