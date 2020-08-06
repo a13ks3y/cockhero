@@ -18,3 +18,5 @@ and do the same for eyes (should be in the settings).
 * Add "panic button" and key combination (all videos are hiding when clicked)
 * "Name the actress" game feature (user should choose correct name of a random girl from one of the videos)
 * Score counting (how?) and score sharing.
+* Add "panic button" which should hide everything
+* Implement search/browse videos without leaving the page

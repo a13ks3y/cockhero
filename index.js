@@ -1,5 +1,4 @@
 (function () {
-    //@todo: save and load to/from localstorage.
     const scaleOnHoverElement = document.getElementById("scale-on-hover");
     const toggleFullScreenElement = document.getElementById("toggle-full-screen");
     const hamburgerElement = document.getElementById("hamburger");
@@ -38,12 +37,15 @@
         element.addEventListener("change", e => {
             const index = i + 1;
             const viewkey = parseVideoUrlElementInput(e.currentTarget.value);
-            // @todo: check if viewkey is false and handle it
-            e.currentTarget.value = viewkey;
-            const src = "https://www.pornhub.com/embed/" + viewkey;
-            const iframe = document.getElementById("temptation-" + index);
-            iframe && (iframe.src = src);
-            updateHash();
+            if (viewkey && viewkey.length) {
+                e.currentTarget.value = viewkey;
+                const src = "https://www.pornhub.com/embed/" + viewkey;
+                const iframe = document.getElementById("temptation-" + index);
+                iframe && (iframe.src = src);
+                updateHash();    
+            } else {
+                // @todo: viewkey is not set or empty string.
+            }
         })
     });
 
@@ -109,10 +111,23 @@
     const btnSave = document.getElementById("btn-save");
     const btnLoad = document.getElementById("btn-load");
     btnSave.addEventListener("click", () => {
-        alert("Coming soon!");
+        const hash = location.hash.substr(1);
+        const viewkeys = hash.split("/");
+        localStorage.setItem('viewkeys', JSON.stringify(viewkeys));
+        alert("Saved to localStorage.");
     });
     btnLoad.addEventListener("click", () => {
-        alert("Coming soon!");
+        const item = localStorage.getItem('viewkeys');
+        try {
+            if (item && item.length) {
+                const viewkeys = JSON.parse(item);
+                viewkeys.forEach(updateViewKey);
+            } else {
+                throw new Error('Nothing to load!');
+            }
+        } catch (error) {
+            alert(error.message);
+        }
     });
 
 

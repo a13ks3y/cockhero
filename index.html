@@ -10,7 +10,7 @@
 <body>
     <header id="header" class="show">
         <h1>Cock Hero</h1>
-        <p>You know the rules. More features will be added soon.</p>
+        <p>Split screen to watch 4 videos at once!</p>
         <a href="https://github.com/a13ks3y/cockhero" target="_blank">
             <img
                     style="position: absolute; top: 0; right: 0; border: 0; z-index: 100500"
@@ -18,13 +18,12 @@
                     alt="Fork me on GitHub"
             />
         </a>
-        <h3>Options</h3>
-        <label>        
-            <input type="checkbox" id="scale-on-hover">
+        <label for="scale-on-hover">        
+            <input type="checkbox" id="scale-on-hover" name="scale-on-hover">
             <span>Scale on hover</span>
         </label>
-        <label>        
-            <input type="checkbox" id="toggle-full-screen">
+        <label for="toggle-full-screen">        
+            <input type="checkbox" id="toggle-full-screen" name="toggle-full-screen">
             <span>Full screen</span>
         </label>
         <h4>Video codes</h4>
@@ -37,7 +36,6 @@
             <button id="btn-save">Save</button>
             <button id="btn-load">Load</button>
         </span>
-        <!--@todo: export, imoort etc.-->
         <button id="btn-restore">Restore Defaults</button>
     </header>
     <span id="hamburger">&#x2630;</span>
