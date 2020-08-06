@@ -72,6 +72,7 @@ header p {
     background: #363636;
     color: #cacaca;
     border: none;
+    outline-color: #fff;
 }
 
 header label {
