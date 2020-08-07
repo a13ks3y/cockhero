@@ -51,7 +51,7 @@
 
     scaleOnHoverElement.addEventListener("change", e => {
         const ct = e.currentTarget;
-        ct.checked ? mainElement.classList.add("resizable-on-hover") : mainElement.classList.remove("resizable-on-hover");
+        ct.checked ? mainElement.classList.add("scale-on-hover") : mainElement.classList.remove("scale-on-hover");
     });
 
     toggleFullScreenElement.addEventListener("change", e => {
