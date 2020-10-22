@@ -1,4 +1,6 @@
+
 (function () {
+    const LOCAL_STORAGE_SAVE_KEY = 'viewkeys';
     const scaleOnHoverElement = document.getElementById("scale-on-hover");
     const toggleFullScreenElement = document.getElementById("toggle-full-screen");
     const hamburgerElement = document.getElementById("hamburger");
@@ -21,8 +23,29 @@
 
     const videoUrlElements = document.querySelectorAll(".video-url");
 
+    const saveAppStateToLocalStorage = () => {
+        const hash = location.hash.substr(1);
+        const viewkeys = hash.split("/");
+        localStorage.setItem(LOCAL_STORAGE_SAVE_KEY, JSON.stringify(viewkeys));
+        alert("Saved to localStorage.");
+    };
+
+    const loadAppStateFromLocalStorage = () => {
+        const item = localStorage.getItem(LOCAL_STORAGE_SAVE_KEY);
+        try {
+            if (item && item.length) {
+                const viewkeys = JSON.parse(item);
+                viewkeys.forEach(updateViewKey);
+            } else {
+                throw new Error('Nothing to load!');
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
     const parseVideoUrlElementInput = (value) => {
-        const urlPattern = /https:\/\/www.pornhub\.com\/view_video\.php\?viewkey=(.*)/i;
+        const urlPattern = /https:\/\/www.pornhub(premium)?\.com\/view_video\.php\?viewkey=(.*)/i;
         // @todo: check if url is valid and return false if it's not.
         return urlPattern.test(value) ? value.match(urlPattern)[1] : value;
     };
@@ -42,7 +65,7 @@
                 const src = "https://www.pornhub.com/embed/" + viewkey;
                 const iframe = document.getElementById("temptation-" + index);
                 iframe && (iframe.src = src);
-                updateHash();    
+                updateHash();
             } else {
                 // @todo: viewkey is not set or empty string.
             }
@@ -51,14 +74,11 @@
 
     scaleOnHoverElement.addEventListener("change", e => {
         const ct = e.currentTarget;
-        ct.checked ? mainElement.classList.add("scale-on-hover") : mainElement.classList.remove("scale-on-hover");
+        ct["checked"] ? mainElement.classList.add("scale-on-hover") : mainElement.classList.remove("scale-on-hover");
     });
 
     toggleFullScreenElement.addEventListener("change", e => {
-        const isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-            (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-            (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-            (document.msFullscreenElement && document.msFullscreenElement !== null);
+        const isInFullScreen = (document.fullscreenElement && true) || (document.webkitFullscreenElement && true) || (document.mozFullScreenElement && true) || (document.msFullscreenElement && true);
 
         const docElm = document.documentElement;
         if (!isInFullScreen) {
@@ -81,19 +101,24 @@
             } else if (document.msExitFullscreen) {
                 document.msExitFullscreen();
             }
-        } 
+        }
     });
 
-    const defaultViewKeys = [
-        "",//"ph571567833f1e5",
-        "",//"409491452",
-        "",//"ph57132f2e9c79e",
-        "",//"ph59b852804b178"
-    ];
+    /*
+        Original Default View Keys. (for legacy).
+
+        const defaultViewKeys = [
+            "ph571567833f1e5",
+            "409491452",
+            "ph57132f2e9c79e",
+            "ph59b852804b178"
+        ];
+    * */
+    const defaultViewKeys = Array(4).fill('');
 
     const updateViewKey = (viewkey, index) => {
         if (index < 0 || index > 3) {
-            console.error("updateViewKey wrong index paraam:", index);
+            console.error("updateViewKey wrong index param:", index);
             return;
         }
         const element = videoUrlElements[index];
@@ -103,7 +128,12 @@
 
     const btnRestore = document.getElementById("btn-restore");
     const restoreDefaults = () => {
-        // @todo: check if not saved and purpose to save begore restore
+        // check if not saved and purpose to save before restore
+        if (!localStorage.getItem(LOCAL_STORAGE_SAVE_KEY)) {
+            if (confirm('You didn\'t save. Do you want to save now before discard all changes?')) {
+                saveAppStateToLocalStorage();
+            }
+        }
         defaultViewKeys.forEach(updateViewKey); // I love FP ^_^
     }
     btnRestore.addEventListener("click", restoreDefaults);
@@ -111,23 +141,10 @@
     const btnSave = document.getElementById("btn-save");
     const btnLoad = document.getElementById("btn-load");
     btnSave.addEventListener("click", () => {
-        const hash = location.hash.substr(1);
-        const viewkeys = hash.split("/");
-        localStorage.setItem('viewkeys', JSON.stringify(viewkeys));
-        alert("Saved to localStorage.");
+        saveAppStateToLocalStorage();
     });
     btnLoad.addEventListener("click", () => {
-        const item = localStorage.getItem('viewkeys');
-        try {
-            if (item && item.length) {
-                const viewkeys = JSON.parse(item);
-                viewkeys.forEach(updateViewKey);
-            } else {
-                throw new Error('Nothing to load!');
-            }
-        } catch (error) {
-            alert(error.message);
-        }
+        loadAppStateFromLocalStorage();
     });
 
 
@@ -147,6 +164,5 @@
             restoreDefaults();
         }
     };
-    window.addEventListener("hashchange", onHashChange);
-    onHashChange();
+    window.addEventListener("hashchange", onHashChange) || onHashChange();
 }());
