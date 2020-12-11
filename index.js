@@ -77,7 +77,7 @@
         ct["checked"] ? mainElement.classList.add("scale-on-hover") : mainElement.classList.remove("scale-on-hover");
     });
 
-    toggleFullScreenElement.addEventListener("change", e => {
+    toggleFullScreenElement.addEventListener("change", () => {
         const isInFullScreen = (document.fullscreenElement && true) || (document.webkitFullscreenElement && true) || (document.mozFullScreenElement && true) || (document.msFullscreenElement && true);
 
         const docElm = document.documentElement;
@@ -154,7 +154,6 @@
             return;
         }
         if (location.hash && location.hash.length > 1) {
-            console.log("hash changed and not empty");
             const hash = location.hash.substr(1);
             const viewkeys = hash.split("/");
             viewkeys.forEach(updateViewKey);
