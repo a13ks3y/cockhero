@@ -5,8 +5,26 @@
     <link rel="stylesheet" href="http://a13ks3y.github.io/reset.css">
     <title>Sandbox</title>
     <style type="text/css">
+        html {
+            font-size: 16px;
+            font-family: monospace;
+        }
         body {
             background: black;
+        }
+        #hamburger {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #f90;
+            border: 1px solid black;
+            margin: 0.666rem;
+            padding: 0.333rem 0.666rem;
+            font-size: 3.333rem;
+            color: black;
+            z-index: 666;
+            cursor: pointer;
+            user-select: none;
         }
         header {
             position: fixed;
@@ -14,15 +32,18 @@
             top: 0;
             width: 100%;
             height: 6.66rem;
-            z-index: 100500;
             padding: 1.666rem 0.666rem;
-            background: rgba(255,153,0,0.666);
+            background: #f90;
+            /*background: rgba(255,153,0,0.666);*/
             text-align: center;
-            transform: translateX(0);
         }
         header.hidden {
-            transform: translateX(-200%);
-            transition: transform ease-in-out 3s;
+            transform: translateX(-110%);
+            transition: transform ease-in-out 0.666s;
+        }
+        header.visible {
+            transform: translateX(0%);
+            transition: transform ease-in-out 0.333s;
         }
         main {
             display: grid;
@@ -53,19 +74,22 @@
     </style>
 </head>
 <body>
-    <span class="hamburger"></span>
+    <main>
+
+</main>
     <header>
         <input id="video-url" type="url" placeholder='Paste video url here "as is"' style="min-width: 50%"/>
         <button id="add-button">Add</button>
+        <button id="clear-all-button">Clear All</button>
     </header>
-    <main>
-
-    </main>
+    <span id="hamburger">&#x2630;</span>
     <script type="text/javascript">
+        const hamburgerEl = document.getElementById('hamburger');
         const headerEl = document.getElementsByTagName('header').item(0);
         const mainEl = document.getElementsByTagName('main').item(0);
         const videoUrlEl = document.getElementById('video-url');
         const addButtonEl = document.getElementById('add-button');
+        const clearAllButtonEl = document.getElementById('clear-all-button');
         const videos = [];
         const savedVideosStr = localStorage.getItem('sandbox-videos');
         if (savedVideosStr && savedVideosStr.length) {
@@ -73,6 +97,8 @@
             savedVideos.forEach(video => addVideo(video));
         }
         headerEl.classList.add('hidden');
+        videoUrlEl.addEventListener("focus", e => e.currentTarget.select());
+
         function addVideo(video) {
             videos.push(video);
             video.iframe = document.createElement('iframe');
@@ -86,6 +112,8 @@
             mainEl.appendChild(video["iframe"]);
         }
         addButtonEl.addEventListener('click', () => {
+            // @todo: add youtube embedded also?
+            // @todo: play from filesystem/localhost? (extention? app? electron?)
             const value = videoUrlEl.value;
             const urlPattern = /https:\/\/www.pornhub(premium)?\.com\/view_video\.php\?viewkey=([^/&]+)/i;
             const viewkey = urlPattern.test(value) ? value.match(urlPattern)[2] : value;
@@ -97,6 +125,22 @@
             };
             addVideo(video);
             localStorage.setItem('sandbox-videos', JSON.stringify(videos));
+        });
+        clearAllButtonEl.addEventListener('click', () => {
+            if (confirm('Are you sure?')) {
+                localStorage.clear();
+                videos.length = 0; // is this legal?!!
+                mainEl.innerHTML = '';
+            }
+        })
+        hamburgerEl.addEventListener('click', () => {
+            if (headerEl.classList.contains('hidden')) {
+                headerEl.classList.remove('hidden');
+                headerEl.classList.add('visible');
+            } else {
+                headerEl.classList.remove('visible');
+                headerEl.classList.add('hidden');
+            }
         })
     </script>
 </body>
