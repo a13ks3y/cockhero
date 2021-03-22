@@ -45,7 +45,7 @@
     }
 
     const parseVideoUrlElementInput = (value) => {
-        const urlPattern = /https:\/\/www.pornhub(premium)?\.com\/view_video\.php\?viewkey=(.*)/i;
+        const urlPattern = /https:\/\/www.pornhub(premium)?\.com\/view_video\.php\?viewkey=(.[^&\/])/i;
         // @todo: check if url is valid and return false if it's not.
         return urlPattern.test(value) ? value.match(urlPattern)[1] : value;
     };
