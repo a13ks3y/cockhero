@@ -1,0 +1,206 @@
+html {
+    font-size: 14px;
+    font-family: monospace;
+}
+body::-webkit-scrollbar {
+    /* @todo: 12px for large screens, 8 for medium and 3 or even 1 for mobile. */
+    width: 8px;
+    background-color: #abc;
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px #bac;
+    background-color: #555;
+}
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #bac;
+    border-radius: 10px;
+    max-height: 100px;
+    background-color: #cba;
+}
+
+body {
+    background: black;
+}
+
+#hamburger {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #f90;
+    border: 1px solid black;
+    margin: 0.666rem;
+    padding: 0.666rem;
+    font-size: 3.333rem;
+    color: black;
+    z-index: 666;
+    cursor: pointer;
+    user-select: none;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 6.66rem;
+    padding: 1.666rem 0.666rem;
+    background: #f90;
+    /*background: rgba(255,153,0,0.666);*/
+    text-align: center;
+}
+
+header.hidden {
+    transform: translateY(-110%);
+    transition: transform ease-in-out 0.666s;
+}
+
+header.visible {
+    transform: translateY(0%);
+    transition: transform ease-in-out 0.333s;
+}
+
+main {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+main iframe {
+    width: 100%;
+}
+
+input[type="text"],
+input[type="url"] {
+    font-size: 1.666rem;
+    border: 1px solid black;
+}
+
+button {
+    font-size: 1.66rem;
+    background: #f90;
+    color: white;
+    outline: none;
+    border: 1px solid black;
+}
+
+main.resizable-on-hover iframe:hover {
+    transition: transform 0.666s;
+    transform: scale(1.666);
+}
+
+@media screen and (max-width: 420px) {
+    input, input[type="text"], input[type="url"], button {
+        font-size: 1rem;
+    }
+    main {
+        grid-template-columns: auto auto;
+    }
+    main.resizable-on-hover iframe:hover:nth-child(1) {
+        transform: scale(1.333) translate(10%, 15%);
+    }
+    main.resizable-on-hover iframe:hover:nth-child(2) {
+        transform: scale(1.333) translate(-10%, 15%);
+    }
+    main.resizable-on-hover iframe:hover:nth-child(3) {
+        transform: scale(1.333) translate(10%, -15%);
+    }
+    main.resizable-on-hover iframe:hover:nth-child(4) {
+        transform: scale(1.333) translate(-10%, -15%);
+    }
+}
+
+/* !important! should go last! */
+@media screen and (min-width: 1024px) {
+    main {
+        grid-template-columns: auto auto auto;
+    }
+    main.resizable-on-hover iframe:hover:nth-child(1) {
+        transform: scale(1.666) translate(15%, 25%);
+    }
+    main.resizable-on-hover iframe:hover:nth-child(3) {
+        transform: scale(1.666) translate(-15%, 25%);
+    }
+    main.resizable-on-hover iframe:hover:nth-child(4) {
+        transform: scale(1.666) translate(15%, -25%);
+    }
+    main.resizable-on-hover iframe:hover:nth-child(6) {
+        transform: scale(1.666) translate(-15%, -25%);
+    }
+
+}
+@media screen and (min-width: 1600px) {
+    main {
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    html {
+        font-size: 18px;
+    }
+    main {
+        grid-template-columns: auto;
+    }
+    #hamburger {
+        font-size: 1.333rem;
+        border-left: none;
+        border: none;
+    }
+    #hamburger.hidden {
+        transform: translateX(-0.666rem);
+        transition: transform ease-in-out 0.666s;
+    }
+    #hamburger.visible {
+        transform: translateX(0);
+        transition: transform ease-in-out 0.666s;
+        transition-delay: 1s;
+    }
+    header {
+        margin-top: 6.666rem;
+        padding: 0.333rem;
+    }
+    header:after {
+        content: '';
+        display: block;
+        position: fixed;
+        left: 0;
+        top: -100vh;
+        height: 300vh; /* ;) */
+        width: 0.333rem;
+        background: #f90;
+        z-index: 100500;
+    }
+    header:before {
+        content: '';
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0.666rem;
+        width: 0.666rem;
+        height: 2.636rem;
+        margin-left: 0.333rem;
+        margin-top: -6.66rem;
+        background: #f90;
+        z-index: 100500;
+        /*border-top: 1px solid black;*/
+        /*border-bottom: 1px solid black;*/
+    }
+    header.hidden {
+        transform: translateX(-110%);
+        transition: transform ease-in-out 0.666s;
+        transition-delay: 1s;
+    }
+
+    header.visible {
+        transform: translateX(0%);
+        transition: transform ease-in-out 0.333s;
+    }
+
+}
