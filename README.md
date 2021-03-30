@@ -5,6 +5,10 @@ Just a page with 4 embed videos from your [favorite site](https://pornhub.com).
 
 [Enjoy](https://a13ks3y.github.io/cockhero/)
 
+Experimental [UX](https://a13ks3y.github.io/cockhero/sandbox.html), and some
+[predefined demo](https://a13ks3y.github.io/cockhero/fate.html)
+
+
 ## Road Map
 * Implement "save" and "load" (localStorage and plaintext that could be copied to the clipboard).
 * Add purpose to switch to landscape for better expirience message
@@ -12,7 +16,7 @@ if device in a portrait position
 * Add menu items and settings to the header. @todo: list menu items here.
 * Add eye tracking software (purpose: to detect which quoter of the screen
  user is looking at in particular time).
-* Allow to increase size of the hovered (or taped if it's mobile) video,
+* Allow increasing size of the hovered (or taped if it's mobile) video,
 and do the same for eyes (should be in the settings).
 * Add share buttons (at least copy url to clipboard).
 * Add "panic button" and key combination (all videos are hiding when clicked)
