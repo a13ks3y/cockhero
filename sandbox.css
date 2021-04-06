@@ -37,6 +37,9 @@ body {
     cursor: pointer;
     user-select: none;
 }
+#hamburger:active {
+    color: white;
+}
 
 header {
     position: fixed;
@@ -48,6 +51,12 @@ header {
     background: #f90;
     /*background: rgba(255,153,0,0.666);*/
     text-align: center;
+}
+
+header .block {
+    margin: 0.666rem;
+    padding: 0.333rem;
+    background: #eee;
 }
 
 header.hidden {
@@ -151,8 +160,7 @@ main.resizable-on-hover iframe:hover {
     }
     #hamburger {
         font-size: 1.333rem;
-        border-left: none;
-        border: none;
+        border-style: none;
     }
     #hamburger.hidden {
         transform: translateX(-0.666rem);
@@ -183,12 +191,14 @@ main.resizable-on-hover iframe:hover {
         display: block;
         position: fixed;
         left: 0;
-        top: 0.666rem;
+        top: calc(0.666rem - 6px);
         width: 0.666rem;
         height: 2.636rem;
         margin-left: 0.333rem;
         margin-top: -6.66rem;
-        background: #f90;
+        border-top: 6px solid #f90;
+        border-bottom: 6px solid #f90;
+        background: transparent;
         z-index: 100500;
         /*border-top: 1px solid black;*/
         /*border-bottom: 1px solid black;*/

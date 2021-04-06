@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="http://a13ks3y.github.io/reset.css">
     <title>Sandbox</title>
+    <link rel="stylesheet" href="reset.css">
     <link href="sandbox.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700italic,700,400italic|EB+Garamond' rel='stylesheet' type='text/css'>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -12,9 +16,9 @@
     <main class="resizable-on-hover"></main>
     <header>
         <input id="video-url" type="url" placeholder='Paste video url here "as is"'/>
-        <button id="add-button">Add</button>
+        <button id="add-button"><i class="fa fa-plus"></i></button>
         <div class="block">
-            <button id="clear-all-button">Clear All</button>
+            <button id="clear-all-button"><i class="fa fa-trash"></i></button>
         </div>
     </header>
     <span id="hamburger">&#x2630;</span>
@@ -35,6 +39,10 @@
         headerEl.classList.add('hidden');
         videoUrlEl.addEventListener("focus", e => e.currentTarget.select());
 
+
+        function removeVideo(video) {
+            // @todo:
+        }
 
         function addVideo(video) {
             videos.push(video);
