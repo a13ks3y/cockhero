@@ -19,6 +19,7 @@
         <button id="add-button"><i class="fa fa-plus"></i></button>
         <div class="block">
             <button id="clear-all-button"><i class="fa fa-trash"></i></button>
+            <button id="save-to-clipboard-button"><i class="fa fa-copy"></i></button>
         </div>
     </header>
     <span id="hamburger">&#x2630;</span>
@@ -30,6 +31,7 @@
         const videoUrlEl = document.getElementById('video-url');
         const addButtonEl = document.getElementById('add-button');
         const clearAllButtonEl = document.getElementById('clear-all-button');
+        const saveToClipboardButtonEl = document.getElementById('save-to-clipboard-button');
         const videos = [];
         const savedVideosStr = localStorage.getItem('sandbox-videos');
         if (savedVideosStr && savedVideosStr.length) {
@@ -71,6 +73,14 @@
                 videos.length = 0; // is this legal?!!
                 mainEl.innerHTML = '';
             }
+        });
+        saveToClipboardButtonEl.addEventListener('click', () => {
+            const strToCopy = localStorage.getItem('sandbox-videos');
+            navigator.clipboard.writeText(strToCopy).then(() => {
+                alert('Copied!');
+            }).catch(() => {
+                alert('Fuck :(');
+            });
         });
         hamburgerEl.addEventListener('click', () => {
             if (headerEl.classList.contains('hidden')) {

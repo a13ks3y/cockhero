@@ -2,7 +2,10 @@
 const mainEl = document.getElementById('main');
 
 const SIX_SECONDS = 6666;
-const FEW_MINUTES = 0xA * SIX_SECONDS * ~~(Math.random()*0xF);
+const FEW_MINUTES = 0xA * SIX_SECONDS * ( 1 + ~~(Math.random()*0xF));
+
+// Может лучше
+
 
 //Exposition
 const someVideos = [{
@@ -90,6 +93,38 @@ const ultimateLevel = [ {
     "iframe": {"frameborder": "0", "autoplay": true, "allowfullscreen": true}
 }];
 
+
+const iJustDoNotKnowHowToCallIt = [{
+    "url": "https://www.pornhub.com/view_video.php?viewkey=ph605cbeb4cdafa&utm_source=127.0.0.1&utm_medium=embed&utm_campaign=embed-removed-nt4x4-html5",
+    "viewkey": "ph605cbeb4cdafa",
+    "iframeUrl": "http://www.pornhub.com/embed/ph605cbeb4cdafa",
+    "iframe": {"frameborder": "0", "autoplay": true, "allowfullscreen": true}
+}, {
+    "url": "https://www.pornhub.com/view_video.php?viewkey=ph605ce95487ce6&utm_source=127.0.0.1&utm_medium=embed&utm_campaign=embed-removed-nt4x4-html5",
+    "viewkey": "ph605ce95487ce6",
+    "iframeUrl": "http://www.pornhub.com/embed/ph605ce95487ce6",
+    "iframe": {"frameborder": "0", "autoplay": true, "allowfullscreen": true}
+}, {
+    "url": "https://www.pornhub.com/view_video.php?viewkey=ph6023e713677c6&utm_source=127.0.0.1:8080&utm_medium=embed&utm_campaign=embed-title-html5",
+    "viewkey": "ph6023e713677c6",
+    "iframeUrl": "http://www.pornhub.com/embed/ph6023e713677c6",
+    "iframe": {"frameborder": "0", "autoplay": true, "allowfullscreen": true}
+}, {
+    "url": "https://www.pornhub.com/view_video.php?viewkey=ph60695cd88d4c7",
+    "viewkey": "ph60695cd88d4c7",
+    "iframeUrl": "http://www.pornhub.com/embed/ph60695cd88d4c7",
+    "iframe": {"frameborder": "0", "autoplay": true, "allowfullscreen": true}
+}];
+
+
+
+
+
+
+
+
+
+
 function playVideos(videos) {
     const videosFragment = createPornHubIframe(videos.map(video => video.viewkey));
     mainEl.innerHTML = '';
@@ -98,7 +133,9 @@ function playVideos(videos) {
 
 setTimeout(() => {
     // wait until start animation ends
-    playVideos(ultimateLevel);
+    //playVideos(ultimateLevel);
+    playVideos(iJustDoNotKnowHowToCallIt);
+    // @todo: add countdown to next wave (how?).
     setTimeout(() => {
         // @todo: some "pulse"/"blink" animation effect?
         playVideos(someVideos);
