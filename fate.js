@@ -134,17 +134,20 @@ function playVideos(videos) {
 setTimeout(() => {
     // wait until start animation ends
     //playVideos(ultimateLevel);
+    console.log('playing: iJustDoNotKnowHowToCallIt')
     playVideos(iJustDoNotKnowHowToCallIt);
     // @todo: add countdown to next wave (how?).
     setTimeout(() => {
         // @todo: some "pulse"/"blink" animation effect?
+        console.log('playing: someVideos')
         playVideos(someVideos);
 
         setTimeout(() => {
+            console.log('playing: nextLevelVideos')
             playVideos(nextLevelVideos);
-        }, FEW_MINUTES * 6);
+        }, FEW_MINUTES * 3);
 
-    }, FEW_MINUTES * 3);
+    }, FEW_MINUTES * Math.SQRT2);
     // @todo: countdown to next wave/iteration/video-change?
 }, SIX_SECONDS);
 // Like CockHero Temptation (which one?), the "Endless Road Track" I think.

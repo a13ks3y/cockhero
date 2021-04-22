@@ -1,5 +1,5 @@
 html {
-    font-size: 14px;
+    font-size: 16px;
     font-family: monospace;
 }
 body::-webkit-scrollbar {
@@ -46,7 +46,7 @@ header {
     left: 0;
     top: 0;
     width: 100%;
-    height: 6.66rem;
+    height: calc(100vh - 66.666vh); /* old value 6.66rem;*/
     padding: 1.666rem 0.666rem;
     background: #f90;
     /*background: rgba(255,153,0,0.666);*/
@@ -54,9 +54,10 @@ header {
 }
 
 header .block {
-    margin: 0.666rem;
+    margin: calc(1.666rem + 1.666rem / 2) auto; /*2.498rem;*/
     padding: 0.333rem;
-    background: #eee;
+    background: black;
+    max-width: 66.666%;
 }
 
 header.hidden {
@@ -85,7 +86,18 @@ main {
 main iframe {
     width: 100%;
 }
-
+main iframe:after {
+    content: "\f1f8";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    color: white;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background: gold;
+}
 input[type="text"],
 input[type="url"] {
     font-size: 1.666rem;
@@ -93,19 +105,22 @@ input[type="url"] {
 }
 
 button {
+    cursor: pointer;
     font-size: 1.66rem;
     background: #f90;
     color: white;
     outline: none;
-    border: 1px solid black;
+    border: calc(0.0666rem * 2) solid white;
 }
-
+button:hover {
+    border-style: dashed;
+}
 main.resizable-on-hover iframe:hover {
     transition: transform 0.666s;
     transform: scale(1.666);
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 720px) {
     input, input[type="text"], input[type="url"], button {
         font-size: 1rem;
     }
