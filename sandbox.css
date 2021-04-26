@@ -21,6 +21,7 @@ body::-webkit-scrollbar-track {
 
 body {
     background: black;
+    user-select: none;
 }
 
 #hamburger {
@@ -97,12 +98,30 @@ main iframe:after {
     height: 32px;
     position: absolute;
     background: gold;
+    right: 0;
+    top: 10px;
 }
 input[type="text"],
 input[type="url"] {
     font-size: 1.666rem;
     border: 1px solid black;
 }
+
+.video-container {
+    text-align: right;
+}
+button.remove-video {
+    padding: 0.0666rem;
+}
+/*
+button.remove-video {
+    display: none;
+}
+
+.video-container:hover button.remove-video {
+    display: inline-block;
+}
+*/
 
 button {
     cursor: pointer;

@@ -1,6 +1,11 @@
 const PORNHUB_VIEWKEY_URL_PATTERN = /https:\/\/www.pornhub(premium)?\.com\/view_video\.php\?viewkey=([^/&]+)/i;
+const PORNHUB_VIEWKEY_PATTERN = /[a-zA-Z0-9]{15}/i;
 function viewkeyFromPronHubUrl(url) {
-    return PORNHUB_VIEWKEY_URL_PATTERN.test(value) ? url.match(PORNHUB_VIEWKEY_URL_PATTERN)[2] : url;
+    return PORNHUB_VIEWKEY_URL_PATTERN.test(url) ? url.match(PORNHUB_VIEWKEY_URL_PATTERN)[2] : viewkeyFromViewkey(url);
+}
+
+function viewkeyFromViewkey(viewkey) {
+    return PORNHUB_VIEWKEY_PATTERN.test(viewkey) ? viewkey : null;
 }
 
 function viewkeyToEmbedUrl(viewkey) {
@@ -28,4 +33,21 @@ function createPornHubIframe(viewkey) {
         node.allowfullscreen = true;
         return node;
     }
+}
+
+function viewKeyToVideoObject(viewKey) {
+    if (viewKey && viewKey.length) {
+        return {
+            "url": `https://www.pornhubpremium.com/view_video.php?viewkey=${viewKey}`,
+            "viewkey": viewKey,
+            "iframeUrl": `https://www.pornhub.com/embed/${viewKey}`,
+            "iframe": {"frameborder": "0", "autoplay": true, "allowfullscreen": true}
+        };
+    } else {
+        return null;
+    }
+}
+
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
 }
