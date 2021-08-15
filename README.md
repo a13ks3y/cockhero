@@ -1,26 +1,27 @@
-# CockHero
-## Description
-Just a page with 4 embed videos from your [favorite site](https://pornhub.com).
+# Cockhero
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
-[Enjoy](https://a13ks3y.github.io/cockhero/)
+## Development server
 
-Experimental [UX](https://a13ks3y.github.io/cockhero/sandbox.html), and some
-[predefined demo](https://a13ks3y.github.io/cockhero/fate.html)
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Code scaffolding
 
-## Road Map
-* Implement "save" and "load" (localStorage and plaintext that could be copied to the clipboard).
-* Add purpose to switch to landscape for better experience message
-if device in a portrait position
-* Add menu items and settings to the header. @todo: list menu items here.
-* Add eye tracking software (purpose: to detect which quoter of the screen
- user is looking at in particular time).
-* Allow increasing size of the hovered (or taped if it's mobile) video,
-and do the same for eyes (should be in the settings).
-* Add share buttons (at least copy url to clipboard).
-* Add "panic button" and key combination (all videos are hiding when clicked)
-* "Name the actress" game feature (user should choose correct name of a random girl from one of the videos)
-* Score counting (how?) and score sharing.
-* Add "panic button" which should hide everything
-* Implement search/browse videos without leaving the page
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
