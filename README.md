@@ -11,7 +11,7 @@ Experimental [UX](https://a13ks3y.github.io/cockhero/sandbox.html), and some
 
 ## Road Map
 * Implement "save" and "load" (localStorage and plaintext that could be copied to the clipboard).
-* Add purpose to switch to landscape for better expirience message
+* Add purpose to switch to landscape for better experience message
 if device in a portrait position
 * Add menu items and settings to the header. @todo: list menu items here.
 * Add eye tracking software (purpose: to detect which quoter of the screen

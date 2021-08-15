@@ -179,7 +179,7 @@ main.resizable-on-hover iframe:hover {
     }
 
 }
-@media screen and (min-width: 1980px) {
+@media screen and (min-width: 1979px) {
     main {
         grid-template-columns: auto auto auto auto;
     }

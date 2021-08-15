@@ -10,9 +10,9 @@ const mainEl = document.getElementById('main');
 
 const SIX_SECONDS = 6666;
 const FEW_MINUTES = 0xA * SIX_SECONDS * (1 + ~~(Math.random() * 0xF));
+// noinspection SpellCheckingInspection
 const defaultViewKeys = [
     "ph582c6a6a90147",
-    "pm554ceda34a835",
     "ph5e01c31d04538",
     "ph5d1fac50cd0e3",
     "ph5ee793cda1428",
@@ -37,8 +37,13 @@ const defaultViewKeys = [
     "ph605cbeb4cdafa",
     "ph605ce95487ce6",
     "ph6023e713677c6",
-    "ph60695cd88d4c7"
-];
+    "ph60695cd88d4c7",
+    "ph5f08e4180bbd7",
+    "ph5e810062a1146",
+    "ph5f2d8c77e5429",
+].filter((value, index, self) => {
+    return self.indexOf(value) === index;
+});
 
 //Exposition
 let videos = [];
