@@ -9,13 +9,16 @@
             const videoEl = document.getElementById('video-' + index);
             const baseUrl = document.getElementById('base-url').value;
             const src = `file://${baseUrl}/${fileName}`;
-            videoEl && videoEl.setAttribute('src', src);
+            const sourceEl = document.createElement('source');
+            sourceEl.setAttribute('type', 'video/mp4');
+            sourceEl.setAttribute('src', src);
+            videoEl.appendChild(sourceEl);
         }
     </script>
 </head>
 <body>
     <div class="controls">
-        <input type="text" value="/Users/oleksiismirnov/Documents" id="base-url" placeholder="Base url" />
+        <input type="text" value="file:///C:///Users/06670/Downloads/" id="base-url" placeholder="Base url" />
         <input type="file" onchange="setVideoSrc(0, this.files[0].name)" />
     </div>
     <video id="video-0"></video>
