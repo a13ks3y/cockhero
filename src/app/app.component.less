@@ -1,0 +1,30 @@
+.burger {
+  cursor: pointer;
+  font-size: 3.666rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #f90;
+  padding: 0 1.666rem;
+  line-height: 6.666rem;
+  transform: scale(0.36, 0.36);
+  border: 1px solid gold;
+  margin: 0;
+}
+.burger:after {
+  content: '';
+  background: transparent;
+  display: block;
+  width: 146%;
+  height: 0.666rem;
+  position: absolute;
+  top: 50%;
+  left: -146%;
+  border-top-width: 0.666rem;
+  border-top-color: #000;
+  border-top-style: double;
+  border-top-color: #f90;
+}
+.burger:active {
+  background: #f96;
+}

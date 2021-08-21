@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FateComponent } from './fate.component';
-import {Video} from "./video";
 
 describe('FateComponent', () => {
   let component: FateComponent;
@@ -32,6 +31,6 @@ describe('FateComponent', () => {
     component.sizeChanged(640, 480);
     expect(component.videos.length).toEqual(1);
     component.sizeChanged(2048, 1024);
-    expect(component.videos.length).toEqual(12);
+    expect(component.videos.length).toEqual(6);
   });
 });

@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FateComponent } from './fate/fate.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FateComponent
+    FateComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
