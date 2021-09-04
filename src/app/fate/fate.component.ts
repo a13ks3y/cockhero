@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Video} from "./video";
+import {Video} from './video';
 
 @Component({
   selector: 'app-fate',
@@ -8,6 +8,7 @@ import {Video} from "./video";
 })
 export class FateComponent implements OnInit {
   videos: Video[] = [];
+  containerClassAttr: string;
 
   constructor() {}
 
@@ -30,5 +31,6 @@ export class FateComponent implements OnInit {
     const columnsCount = Math.floor(width / videoRect.width);
     const rowsCount = Math.floor(height / videoRect.height);
     this.videos = Array(columnsCount * rowsCount).fill(new Video());
+    this.containerClassAttr = `aps-${width}x${height}`;
   }
 }

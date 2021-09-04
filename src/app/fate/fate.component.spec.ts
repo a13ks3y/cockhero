@@ -33,4 +33,14 @@ describe('FateComponent', () => {
     component.sizeChanged(2048, 1024);
     expect(component.videos.length).toEqual(6);
   });
+  it('should update container class according to page size changes', () => {
+    component.sizeChanged(1024, 768);
+    const element = fixture.nativeElement.querySelector('section.wrapper');
+    expect(element.classList.contains('aps-1024x768')).toBeTrue();
+    component.sizeChanged(640, 480);
+    expect(element.classList.contains('aps-640x480')).toBeTrue();
+    const rw = Math.floor(Math.random() * 2048);
+    const rh = Math.floor(Math.random() * 1024);
+    expect(element.classList.contains(`aps-${rw}x${rh}`)).toBeTrue();
+  });
 });
